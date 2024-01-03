@@ -13,6 +13,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         brightness: Brightness.dark,
+        textTheme: TextTheme(
+          displayLarge: TextStyle(
+            color: Colors.white
+          )
+        )
       ),
       debugShowCheckedModeBanner: false,
       home: NotesView(),
