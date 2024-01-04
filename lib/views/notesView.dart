@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notes/widgets/Item_view.dart';
 
-
 class NotesView extends StatelessWidget {
   const NotesView({Key? key}) : super(key: key);
 
@@ -23,8 +22,13 @@ class NotesView extends StatelessWidget {
                   IconButton(onPressed: () {}, icon: const Icon(Icons.search))
                 ],
               ),
-              ItemView(),
+              Expanded(
+                child: ListView.builder(
+                  itemBuilder: (context, index) => ItemView(),
+                  itemCount: 10,
 
+                ),
+              ),
             ],
           ),
         ),
