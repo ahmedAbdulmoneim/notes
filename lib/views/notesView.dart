@@ -8,6 +8,11 @@ class NotesView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: (){},
+          child: Icon(Icons.add),
+
+        ),
         body: Padding(
           padding: const EdgeInsets.all(20),
           child: Column(
