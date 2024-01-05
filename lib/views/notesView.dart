@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notes/widgets/Item_view.dart';
+import 'package:notes/widgets/addNote.dart';
 
 class NotesView extends StatelessWidget {
   const NotesView({Key? key}) : super(key: key);
@@ -9,9 +10,13 @@ class NotesView extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
-          onPressed: (){},
-          child: Icon(Icons.add),
-
+          onPressed: () {
+            showModalBottomSheet(
+                context: context,
+                shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+                builder: (context) => const AddNote());
+          },
+          child: const Icon(Icons.add),
         ),
         body: Padding(
           padding: const EdgeInsets.all(20),
@@ -31,7 +36,6 @@ class NotesView extends StatelessWidget {
                 child: ListView.builder(
                   itemBuilder: (context, index) => ItemView(),
                   itemCount: 10,
-
                 ),
               ),
             ],
