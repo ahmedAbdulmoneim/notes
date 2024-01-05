@@ -14,12 +14,12 @@ class AddNote extends StatelessWidget {
       padding: const EdgeInsets.all(20.0),
       child: Column(
         children: [
-         defaultFormField(vertical: 20.0, horizontal: 10,label: 'Title'),
+         defaultFormField(maxLine: 1,label: 'Title'),
           const SizedBox(
             height: 10,
           ),
 
-          defaultFormField(vertical: 60,horizontal: 10,label: 'Content'),
+          defaultFormField(maxLine: 5,label: 'Content'),
           Spacer(),
           ElevatedButton(
             onPressed: () {},
