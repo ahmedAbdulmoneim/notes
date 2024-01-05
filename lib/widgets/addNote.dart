@@ -1,6 +1,7 @@
-import 'dart:developer';
+
 
 import 'package:flutter/material.dart';
+import 'package:notes/widgets/textFormField.dart';
 
 
 
@@ -13,35 +14,12 @@ class AddNote extends StatelessWidget {
       padding: const EdgeInsets.all(20.0),
       child: Column(
         children: [
-          TextFormField(
-            decoration: InputDecoration(
-                labelText: "Title",
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                )),
-          ),
+         defaultFormField(vertical: 20.0, horizontal: 10,label: 'Title'),
           const SizedBox(
             height: 10,
           ),
-          Container(
-            height: 150,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: Colors.white),
-            ),
-            child: Center(
-              child: TextFormField(
-                decoration: const InputDecoration(
-                    labelText: 'Content',
-                    border: OutlineInputBorder(borderSide: BorderSide.none)
-                    // border: OutlineInputBorder(
-                    //   borderRadius: BorderRadius.circular(7)
-                    // ),
 
-                    ),
-              ),
-            ),
-          ),
+          defaultFormField(vertical: 60,horizontal: 10,label: 'Content'),
           Spacer(),
           ElevatedButton(
             onPressed: () {},
