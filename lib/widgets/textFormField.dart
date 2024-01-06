@@ -4,9 +4,13 @@ Widget defaultFormField({
   String? label,
 
   int? maxLine,
+  onSubmitted,
+  validate,
 
 
 }) => TextFormField(
+  onFieldSubmitted: onSubmitted,
+  validator: validate ,
   cursorColor: Colors.greenAccent,
   maxLines: maxLine,
   decoration: InputDecoration(
@@ -23,6 +27,14 @@ Widget defaultFormField({
       borderRadius: BorderRadius.circular(10),
       borderSide: const BorderSide(color: Colors.greenAccent)
     ),
+    errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10),
+        borderSide: const BorderSide(color: Colors.red)
+    ),
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10)
+    )
+
 
   ),
 );

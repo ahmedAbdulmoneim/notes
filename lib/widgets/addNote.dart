@@ -1,38 +1,85 @@
-
-
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:notes/widgets/textFormField.dart';
 
-
-
-class AddNote extends StatelessWidget {
+class AddNote extends StatefulWidget {
   const AddNote({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: Column(
-        children: [
-         defaultFormField(maxLine: 1,label: 'Title'),
-          const SizedBox(
-            height: 10,
-          ),
+  State<AddNote> createState() => _AddNoteState();
+}
 
-          defaultFormField(maxLine: 6,label: 'Content'),
-          Spacer(),
-          ElevatedButton(
-            onPressed: () {},
-            style: ElevatedButton.styleFrom(
-              foregroundColor: Colors.black,
-              backgroundColor: Colors.greenAccent,
-              minimumSize: const Size(double.infinity, 40),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10),
+class _AddNoteState extends State<AddNote> {
+  GlobalKey<FormState> formKey = GlobalKey();
+  AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
+  String? title;
+  String? subtitle;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 370,
+      child: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Form(
+          key: formKey,
+          autovalidateMode: autoValidateMode,
+          child: Column(
+            children: [
+              defaultFormField(
+                  maxLine: 1,
+                  label: 'Title',
+                  onSubmitted: (value) {
+                    title = value;
+                  },
+                  validate: (value) {
+                    if (value.isEmpty) {
+                      return 'this field is required ';
+                    } else {
+                      return null;
+                    }
+                  }),
+              const SizedBox(
+                height: 10,
               ),
-            ),
-            child: Text("Add"),
-          )
-        ],
+              defaultFormField(
+                maxLine: 6,
+                label: 'Content',
+                onSubmitted: (value){
+                  subtitle = value;
+                },
+                validate: (value){
+                  if(value.isEmpty){
+                    return "this field is required ";
+                  }
+
+                }
+              ),
+              Spacer(),
+              ElevatedButton(
+                onPressed: () {
+                  if(formKey.currentState!.validate()){
+                    formKey.currentState!.save();
+                  }else{
+                    autoValidateMode = AutovalidateMode.always;
+                    setState(() {
+
+                    });
+                  }
+                },
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.black,
+                  backgroundColor: Colors.greenAccent,
+                  minimumSize: const Size(double.infinity, 40),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                child: Text("Add"),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }

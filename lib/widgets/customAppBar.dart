@@ -9,10 +9,10 @@ class CustomAppBar extends StatelessWidget {
     return Row(
       children: [
         Text(title,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 20,
         ),),
-        Spacer(),
+        const Spacer(),
         Container(
           decoration: BoxDecoration(
             color: Colors.white.withOpacity(0.1),
