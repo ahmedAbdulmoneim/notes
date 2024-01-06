@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:notes/views/editNotes.dart';
 import 'package:notes/widgets/Item_view.dart';
 import 'package:notes/widgets/addNote.dart';
+import 'package:notes/widgets/customAppBar.dart';
 
 class NotesView extends StatelessWidget {
   const NotesView({Key? key}) : super(key: key);
@@ -22,19 +24,12 @@ class NotesView extends StatelessWidget {
           padding: const EdgeInsets.all(20),
           child: Column(
             children: [
-              Row(
-                children: [
-                  const Text(
-                    'Notes View',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  const Spacer(),
-                  IconButton(onPressed: () {}, icon: const Icon(Icons.search))
-                ],
-              ),
+             CustomAppBar(title: "Notes ", icon: Icons.search),
+              SizedBox(height: 15,),
               Expanded(
                 child: ListView.builder(
-                  itemBuilder: (context, index) => ItemView(),
+                  itemBuilder: (context, index) => GestureDetector(child: ItemView(),
+                  onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => EditNote (),));},),
                   itemCount: 10,
                 ),
               ),

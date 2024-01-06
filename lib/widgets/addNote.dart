@@ -19,7 +19,7 @@ class AddNote extends StatelessWidget {
             height: 10,
           ),
 
-          defaultFormField(maxLine: 5,label: 'Content'),
+          defaultFormField(maxLine: 6,label: 'Content'),
           Spacer(),
           ElevatedButton(
             onPressed: () {},
