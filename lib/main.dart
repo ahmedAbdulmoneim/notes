@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:notes/cubit/add_note_cubit.dart';
 import 'package:notes/views/notesView.dart';
-
 import 'models/noteModel.dart';
 
 void main() async{
@@ -18,17 +19,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        brightness: Brightness.dark,
-        textTheme: TextTheme(
-          displayLarge: TextStyle(
-            color: Colors.white
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => AddNoteCubit(),)
+      ],
+      child: MaterialApp(
+        theme: ThemeData(
+          brightness: Brightness.dark,
+          textTheme: TextTheme(
+            displayLarge: TextStyle(
+              color: Colors.white
+            )
           )
-        )
+        ),
+        debugShowCheckedModeBanner: false,
+        home: NotesView(),
       ),
-      debugShowCheckedModeBanner: false,
-      home: NotesView(),
     );
   }
 }
