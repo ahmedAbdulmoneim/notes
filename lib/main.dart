@@ -10,9 +10,11 @@ import 'models/noteModel.dart';
 void main() async{
 
   await Hive.initFlutter();
-  await Hive.openBox('notes box');
-  Bloc.observer = SimpleBlocObserver();
+
   Hive.registerAdapter(NoteModelAdapter());
+  await Hive.openBox<NoteModel>('notes box');
+  Bloc.observer = SimpleBlocObserver();
+
   runApp(const MyApp());
 }
 
@@ -28,14 +30,14 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         theme: ThemeData(
           brightness: Brightness.dark,
-          textTheme: TextTheme(
+          textTheme: const TextTheme(
             displayLarge: TextStyle(
               color: Colors.white
             )
           )
         ),
         debugShowCheckedModeBanner: false,
-        home: NotesView(),
+        home: const NotesView(),
       ),
     );
   }
