@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:notes/widgets/textFormField.dart';
 
-class AddNote extends StatefulWidget {
-  const AddNote({Key? key}) : super(key: key);
+class AddNoteForm extends StatefulWidget {
+  const AddNoteForm({Key? key}) : super(key: key);
 
   @override
-  State<AddNote> createState() => _AddNoteState();
+  State<AddNoteForm> createState() => _AddNoteFormState();
 }
 
-class _AddNoteState extends State<AddNote> {
+class _AddNoteFormState extends State<AddNoteForm> {
   GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
   String? title;

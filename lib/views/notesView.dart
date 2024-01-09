@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:notes/views/editNotes.dart';
 import 'package:notes/widgets/Item_view.dart';
-import 'package:notes/widgets/addNote.dart';
+import 'package:notes/widgets/add_note_bottom_sheet.dart';
 import 'package:notes/widgets/customAppBar.dart';
 
 class NotesView extends StatelessWidget {
@@ -16,7 +16,7 @@ class NotesView extends StatelessWidget {
             showModalBottomSheet(
                 context: context,
                 shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                builder: (context) => const AddNote());
+                builder: (context) => const AddNoteBottomSheet());
           },
           child: const Icon(Icons.add),
         ),
