@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 
 @immutable
-abstract class AddNoteState{}
+abstract class AddNoteState {}
 
-class AddNoteInitial extends AddNoteState{}
-class AddNoteLoading extends AddNoteState{}
-class AddNoteSuccess extends AddNoteState{}
-class AddNoteFailure extends AddNoteState{}
+class AddNoteInitial extends AddNoteState {}
+
+class AddNoteLoading extends AddNoteState {}
+
+class AddNoteSuccess extends AddNoteState {}
+
+class AddNoteFailure extends AddNoteState {}

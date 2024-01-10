@@ -1,9 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 
-class SimpleBlocObserver implements BlocObserver{
-
-
+class SimpleBlocObserver implements BlocObserver {
   @override
   void onChange(BlocBase<dynamic> bloc, Change<dynamic> change) {
     debugPrint('change $change');
@@ -11,7 +9,7 @@ class SimpleBlocObserver implements BlocObserver{
 
   @override
   void onClose(BlocBase<dynamic> bloc) {
-    debugPrint('close ${bloc}');
+    debugPrint('close $bloc');
   }
 
   @override
@@ -30,8 +28,8 @@ class SimpleBlocObserver implements BlocObserver{
   }
 
   @override
-  void onTransition(Bloc<dynamic, dynamic> bloc, Transition<dynamic, dynamic> transition) {
+  void onTransition(
+      Bloc<dynamic, dynamic> bloc, Transition<dynamic, dynamic> transition) {
     // TODO: implement onTransition
   }
-
 }

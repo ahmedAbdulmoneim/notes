@@ -5,7 +5,7 @@ class ItemView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return Container(
         decoration: BoxDecoration(
             color: Colors.orangeAccent,
             borderRadius: BorderRadius.circular(10)),
@@ -15,11 +15,11 @@ class ItemView extends StatelessWidget {
         padding: const EdgeInsets.only(top: 20, left: 15, bottom: 15),
         child: Row(
           children: [
-            SizedBox(
+            const SizedBox(
               width: 200,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children: [
                   Text(
                     "Flutter tips ",
                     style: TextStyle(
@@ -33,8 +33,7 @@ class ItemView extends StatelessWidget {
                   ),
                   Text(
                     "Build your career with Ahmed Mohammad ",
-                    style: TextStyle(
-                        color: Colors.black54, fontSize: 15),
+                    style: TextStyle(color: Colors.black54, fontSize: 15),
                   )
                 ],
               ),
@@ -54,8 +53,7 @@ class ItemView extends StatelessWidget {
                     padding: EdgeInsets.only(right: 10.0),
                     child: Text(
                       "May 21,2024",
-                      style: TextStyle(
-                          color: Colors.black54, fontSize: 15),
+                      style: TextStyle(color: Colors.black54, fontSize: 15),
                     ),
                   )
                 ],
