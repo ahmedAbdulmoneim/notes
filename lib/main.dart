@@ -23,22 +23,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => AddNoteCubit(),)
-      ],
-      child: MaterialApp(
-        theme: ThemeData(
-          brightness: Brightness.dark,
-          textTheme: const TextTheme(
-            displayLarge: TextStyle(
-              color: Colors.white
-            )
+    return MaterialApp(
+      theme: ThemeData(
+        brightness: Brightness.dark,
+        textTheme: const TextTheme(
+          displayLarge: TextStyle(
+            color: Colors.white
           )
-        ),
-        debugShowCheckedModeBanner: false,
-        home: const NotesView(),
+        )
       ),
+      debugShowCheckedModeBanner: false,
+      home: const NotesView(),
     );
   }
 }
