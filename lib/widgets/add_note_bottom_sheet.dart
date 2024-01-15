@@ -18,6 +18,7 @@ class AddNoteBottomSheet extends StatelessWidget {
           if(state is AddNoteFailure){
             print('error happened ');
           }
+
           if(state is AddNoteSuccess){
             Navigator.pop(context);
           }

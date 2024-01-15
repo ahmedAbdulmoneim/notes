@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:notes/cubit/add_notes_cubit/add_note_cubit.dart';
 import 'package:notes/cubit/add_notes_cubit/add_note_states.dart';
 import 'package:notes/models/note_model.dart';
@@ -34,7 +35,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
               defaultFormField(
                   maxLine: 1,
                   label: 'Title',
-                  onSubmitted: (value) {
+                  onSaved: (value) {
                     title = value;
                   },
                   validate: (value) {
@@ -50,7 +51,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
               defaultFormField(
                   maxLine: 6,
                   label: 'Content',
-                  onSubmitted: (value) {
+                  onSaved: (value) {
                     subtitle = value;
                   },
                   validate: (value) {
@@ -66,13 +67,15 @@ class _AddNoteFormState extends State<AddNoteForm> {
                   isLoading = state is AddNoteLoading ? true : false;
                   return ElevatedButton(
                     onPressed: () {
+
                       if (formKey.currentState!.validate()) {
                         formKey.currentState!.save();
                         var noteModel = NoteModel(
-                            subtitle: subtitle ?? '',
-                            title: title ?? '',
-                            date: DateTime.now().toString(),
-                            color: Colors.blue.value);
+                            subtitle: subtitle!,
+                            title: title!,
+                            date: DateFormat("MMMM d, yyyy").format(DateTime.now()),
+                            color: Colors.blue.value
+                        );
                         BlocProvider.of<AddNoteCubit>(context)
                             .addNote(noteModel);
                       } else {

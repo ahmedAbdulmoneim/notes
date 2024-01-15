@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 Widget defaultFormField({
   String? label,
   int? maxLine,
-  onSubmitted,
+  onSaved,
   validate,
 }) =>
     TextFormField(
-      onFieldSubmitted: onSubmitted,
+      onSaved: onSaved,
       validator: validate,
       cursorColor: Colors.greenAccent,
       maxLines: maxLine,
