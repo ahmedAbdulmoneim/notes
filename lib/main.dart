@@ -22,13 +22,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-          brightness: Brightness.dark,
-          textTheme:
-              const TextTheme(displayLarge: TextStyle(color: Colors.white))),
-      debugShowCheckedModeBanner: false,
-      home: const NotesView(),
+    return BlocProvider(
+      create: (context) => GetNoteCubit()..getNotes(),
+      child: MaterialApp(
+        theme: ThemeData(
+            brightness: Brightness.dark,
+            textTheme:
+                const TextTheme(displayLarge: TextStyle(color: Colors.white))),
+        debugShowCheckedModeBanner: false,
+        home: const NotesView(),
+      ),
     );
   }
 }
