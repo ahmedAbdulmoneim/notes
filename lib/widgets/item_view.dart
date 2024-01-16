@@ -48,7 +48,9 @@ class ItemView extends StatelessWidget {
                 ),
                 SizedBox(
                   child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      noteModel.delete();
+                    },
                     icon: const Icon(Icons.delete_sharp),
                     color: Colors.black,
                   ),
