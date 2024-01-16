@@ -20,7 +20,7 @@ class NotesListView extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const EditNote(),
+                    builder: (context) =>  EditNote(note:BlocProvider.of<GetNoteCubit>(context).notes![index] ,),
                   ));
             },
           ),

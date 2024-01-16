@@ -5,10 +5,12 @@ Widget defaultFormField({
   int? maxLine,
   onSaved,
   validate,
+  onChange,
 }) =>
     TextFormField(
       onSaved: onSaved,
       validator: validate,
+      onChanged: onChange,
       cursorColor: Colors.greenAccent,
       maxLines: maxLine,
       decoration: InputDecoration(
