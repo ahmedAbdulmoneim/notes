@@ -4,6 +4,8 @@ import 'package:intl/intl.dart';
 import 'package:notes/cubit/add_notes_cubit/add_note_cubit.dart';
 import 'package:notes/cubit/add_notes_cubit/add_note_states.dart';
 import 'package:notes/models/note_model.dart';
+import 'package:notes/widgets/color_item.dart';
+import 'package:notes/widgets/color_list_view.dart';
 import 'package:notes/widgets/textFormField.dart';
 
 class AddNoteForm extends StatefulWidget {
@@ -24,7 +26,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 370,
+      height: 420,
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Form(
@@ -62,6 +64,10 @@ class _AddNoteFormState extends State<AddNoteForm> {
                     }
                   }),
               const Spacer(),
+              const SizedBox(
+                height: 24*2,
+                child: ColorListView(),
+              ),
               BlocBuilder<AddNoteCubit, AddNoteState>(
                 builder: (context, state) {
                   isLoading = state is AddNoteLoading ? true : false;
