@@ -8,13 +8,14 @@ class GetNoteCubit extends Cubit<GetNoteState> {
   GetNoteCubit() : super(GetNoteInitialState());
 
   List<NoteModel>? notes;
-   getNotes() {
-      var notesBox = Hive.box<NoteModel>(kNotesBox);
-       notes =  notesBox.values.toList();
-      emit(GetNoteSuccessState());
 
+  getNotes() {
+    var notesBox = Hive.box<NoteModel>(kNotesBox);
+    notes = notesBox.values.toList();
+    emit(GetNoteSuccessState());
   }
-  refreshNotes(){
-     getNotes();
+
+  refreshNotes() {
+    getNotes();
   }
 }

@@ -3,7 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes/cubit/get_notes_cubit/get_note_cubit.dart';
 import 'package:notes/models/note_model.dart';
 import 'package:notes/widgets/custom_appbar.dart';
-import 'package:notes/widgets/textFormField.dart';
+import 'package:notes/widgets/custom_text_field.dart';
+
+import '../constant/constant.dart';
+import '../widgets/color_item.dart';
 
 class EditNote extends StatefulWidget {
   const EditNote({Key? key, required this.note}) : super(key: key);
@@ -14,8 +17,8 @@ class EditNote extends StatefulWidget {
 }
 
 class _EditNoteState extends State<EditNote> {
-   String? title;
-   String? subtitle;
+  String? title;
+  String? subtitle;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +37,6 @@ class _EditNoteState extends State<EditNote> {
                   widget.note.save();
                   BlocProvider.of<GetNoteCubit>(context).getNotes();
                   Navigator.pop(context);
-
                 },
               ),
               const SizedBox(
@@ -55,9 +57,58 @@ class _EditNoteState extends State<EditNote> {
                   onChange: (value) {
                     subtitle = value;
                   }),
+              const SizedBox(
+                height: 20,
+              ),
+              EditNoteColor(
+                noteModel: widget.note,
+              ),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class EditNoteColor extends StatefulWidget {
+  const EditNoteColor({Key? key, required this.noteModel}) : super(key: key);
+  final NoteModel noteModel;
+
+  @override
+  State<EditNoteColor> createState() => _EditNoteColorState();
+}
+
+class _EditNoteColorState extends State<EditNoteColor> {
+  late int currentIndex;
+
+  @override
+  void initState() {
+    currentIndex = color.indexOf(Color(widget.noteModel.color));
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 24 * 2,
+      child: ListView.builder(
+        itemBuilder: (context, index) => Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 6),
+          child: GestureDetector(
+            onTap: () {
+              currentIndex = index;
+              widget.noteModel.color = color[index].value;
+              setState(() {});
+            },
+            child: ColorItem(
+              color: color[index],
+              isSelected: currentIndex == index,
+            ),
+          ),
+        ),
+        itemCount: color.length,
+        scrollDirection: Axis.horizontal,
       ),
     );
   }

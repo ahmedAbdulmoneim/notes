@@ -1,10 +1,5 @@
-import '../../models/note_model.dart';
+abstract class GetNoteState {}
 
-abstract class GetNoteState{}
+class GetNoteInitialState extends GetNoteState {}
 
-class GetNoteInitialState extends GetNoteState{}
-
-class GetNoteSuccessState extends GetNoteState{
-
-}
-
+class GetNoteSuccessState extends GetNoteState {}

@@ -5,6 +5,7 @@ import 'package:notes/constant/constant.dart';
 import 'package:notes/cubit/get_notes_cubit/get_note_cubit.dart';
 import 'package:notes/simple_bloc_observer/bloc_observer.dart';
 import 'package:notes/views/notes_view.dart';
+
 import 'models/note_model.dart';
 
 void main() async {
@@ -12,7 +13,6 @@ void main() async {
   Bloc.observer = SimpleBlocObserver();
   Hive.registerAdapter(NoteModelAdapter());
   await Hive.openBox<NoteModel>(kNotesBox);
-
 
   runApp(const MyApp());
 }

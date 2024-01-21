@@ -1,4 +1,3 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes/cubit/get_notes_cubit/get_note_cubit.dart';
@@ -44,7 +43,8 @@ class ItemView extends StatelessWidget {
                         noteModel.subtitle,
                         maxLines: 5,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(color: Colors.black54, fontSize: 15),
+                        style: const TextStyle(
+                            color: Colors.black54, fontSize: 15),
                       )
                     ],
                   ),
@@ -66,10 +66,13 @@ class ItemView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only( right: 10.0),
+                  padding: const EdgeInsets.only(right: 10.0),
                   child: Text(
                     noteModel.date,
-                    style:  const TextStyle(color: Colors.black54, fontSize: 15,),
+                    style: const TextStyle(
+                      color: Colors.black54,
+                      fontSize: 15,
+                    ),
                   ),
                 ),
               ],

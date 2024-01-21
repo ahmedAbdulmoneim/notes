@@ -4,9 +4,8 @@ import 'package:intl/intl.dart';
 import 'package:notes/cubit/add_notes_cubit/add_note_cubit.dart';
 import 'package:notes/cubit/add_notes_cubit/add_note_states.dart';
 import 'package:notes/models/note_model.dart';
-import 'package:notes/widgets/color_item.dart';
 import 'package:notes/widgets/color_list_view.dart';
-import 'package:notes/widgets/textFormField.dart';
+import 'package:notes/widgets/custom_text_field.dart';
 
 class AddNoteForm extends StatefulWidget {
   const AddNoteForm({Key? key}) : super(key: key);
@@ -64,24 +63,22 @@ class _AddNoteFormState extends State<AddNoteForm> {
                     }
                   }),
               const Spacer(),
-              const SizedBox(
-                height: 24*2,
-                child: ColorListView(),
-              ),
+              const ColorListView(),
               BlocBuilder<AddNoteCubit, AddNoteState>(
                 builder: (context, state) {
                   isLoading = state is AddNoteLoading ? true : false;
                   return ElevatedButton(
                     onPressed: () {
-
                       if (formKey.currentState!.validate()) {
                         formKey.currentState!.save();
                         var noteModel = NoteModel(
                             subtitle: subtitle!,
                             title: title!,
-                            date: DateFormat("MMMM d, yyyy").format(DateTime.now()),
-                            color: BlocProvider.of<AddNoteCubit>(context).color!.value
-                        );
+                            date: DateFormat("MMMM d, yyyy")
+                                .format(DateTime.now()),
+                            color: BlocProvider.of<AddNoteCubit>(context)
+                                .color
+                                .value);
                         BlocProvider.of<AddNoteCubit>(context)
                             .addNote(noteModel);
                       } else {
